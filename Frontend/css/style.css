@@ -1,0 +1,141 @@
+/* === Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f1;
+  color: #333;
+  line-height: 1.6;
+  padding-bottom: 5rem;
+}
+
+/* === Header === */
+header {
+  background-color: #2d6a4f;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+header h1 {
+  font-size: 1.8rem;
+}
+
+/* === Main Layout === */
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* === Sensor Cards === */
+.status-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: white;
+  padding: 1.2rem;
+  border-left: 5px solid #40916c;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* === Control Panel === */
+.control-panel {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.control-panel h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #1b4332;
+}
+.control-panel button {
+  padding: 0.5rem 1.2rem;
+  margin-right: 1rem;
+  border: none;
+  background-color: #52b788;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+.control-panel button:hover {
+  background-color: #40916c;
+}
+.control-panel p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.auto-info {
+  margin-top: 1rem;
+  background-color: #e6f4ea;
+  padding: 1rem;
+  border-left: 4px solid #52b788;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* === Chart Panel === */
+.chart-panel {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.chart-panel h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: #1b4332;
+}
+.chart-box {
+  margin-bottom: 2.5rem;
+}
+.chart-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #081c15;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+  gap: 1rem;
+}
+
+
+.chart-box canvas {
+  max-height: 220px;
+  width: 100%;
+}
+
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .status-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .control-panel button {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

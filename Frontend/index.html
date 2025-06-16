@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Garden Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Smart Garden Monitoring System</h1>
+  </header>
+
+  <main>
+    <section class="status-cards">
+      <div class="card" id="soilCard">
+        Soil Moisture: <span id="soilValue">--</span>
+        (<span id="soilLabel">--</span>)
+      </div>
+      <div class="card" id="phCard">pH Level: <span id="phValue">--</span></div>
+      <div class="card" id="humidityCard">Humidity: <span id="humidityValue">--%</span></div>
+      <div class="card" id="tempCard">Temperature: <span id="temperatureValue">--°C</span></div>
+    </section>
+
+    <section class="control-panel">
+        <h2>Relay Water Control</h2>
+        <button id="manualRelayBtn">Manual ON/OFF</button>
+        <button id="autoRelayBtn">Auto Mode ON/OFF</button>
+
+        <p>Status: <span id="relayStatus">--</span></p>
+        <p>Mode: <span id="modeStatus">--</span></p>
+
+        <div class="auto-info">
+            <strong>Penjelasan Auto Mode:</strong>
+            <p>
+            Jika mode diatur ke <b>AUTO</b>, sistem akan otomatis <b>menyalakan relay</b> (air menyiram)
+            ketika <b>Soil Moisture &lt; 50%</b>, dan akan <b>mematikan relay</b> saat kelembapan sudah mencukupi.
+            </p>
+        </div>
+    </section>
+
+    <div class="chart-grid">
+      <div class="chart-box">
+          <h3>Soil Moisture</h3>
+          <canvas id="soilChart" width="300" height="150"></canvas>
+      </div>
+      <div class="chart-box">
+          <h3>Temperature (°C)</h3>
+          <canvas id="tempChart" width="300" height="150"></canvas>
+      </div>
+      <div class="chart-box">
+          <h3>Humidity (%)</h3>
+          <canvas id="humChart" width="300" height="150"></canvas>
+      </div>
+      <div class="chart-box">
+          <h3>pH Level</h3>
+          <canvas id="phChart" width="300" height="150"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/chart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
