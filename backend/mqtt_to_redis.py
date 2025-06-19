@@ -3,16 +3,22 @@ import redis
 import json
 from datetime import datetime
 
-# Konfigurasi MQTT
-MQTT_HOST = "103.23.198.211"
+# Konfigurasi MQTT (Broker di VPS 1)
+MQTT_HOST = "103.49.239.121"
 MQTT_PORT = 1883
 MQTT_USER = "myuser"
 MQTT_PASS = "tugasakhir"
 MQTT_TOPIC = "sensors/report"
 
-# Konfigurasi Redis
-r = redis.Redis(host='localhost', port=6379, decode_responses=True)
-KEY_LOG = "sensor_data_log"
+# Konfigurasi Redis (Redis di VPS 2)
+r = redis.Redis(
+    host='103.217.145.62',      # VPS 2 IP
+    port=6379,
+    password='tugasakhir',      
+    decode_responses=True
+)
+
+KEY_LOG = "sensor_data_log_r"
 MAX_LOG = 100
 
 def on_connect(client, userdata, flags, rc):
@@ -25,11 +31,12 @@ def on_message(client, userdata, msg):
         data = json.loads(payload)
         data["timestamp"] = datetime.now().isoformat()
 
-        r.set("latest_sensor_data", json.dumps(data))
+        # Simpan data ke Redis VPS 2
+        r.set("latest_sensor_data_r", json.dumps(data))
         r.lpush(KEY_LOG, json.dumps(data))
         r.ltrim(KEY_LOG, 0, MAX_LOG - 1)
 
-        print(f"[MQTT->Redis] Stored: {data}")
+        print(f"[MQTT->Redis] Stored to VPS2: {data}")
 
     except Exception as e:
         print("[ERROR] Failed to handle message:", e)
