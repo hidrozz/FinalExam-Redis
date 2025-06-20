@@ -23,7 +23,7 @@ ADC_WET = 1000
 
 def publish_relay_status(status):
     publish.single("sensors/moist_threshold", payload=status,
-        hostname="103.49.239.211", port=1883,
+        hostname="103.76.120.64", port=1883,
         auth={'username': 'myuser', 'password': 'tugasakhir'}
     )
 
