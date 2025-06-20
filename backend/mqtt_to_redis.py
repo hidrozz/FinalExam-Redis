@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 
 # Konfigurasi MQTT (Broker di VPS 1)
-MQTT_HOST = "103.49.239.121"
+MQTT_HOST = "103.76.120.64"
 MQTT_PORT = 1883
 MQTT_USER = "myuser"
 MQTT_PASS = "tugasakhir"
